@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
-import { useSelector} from "react-redux"
+import Table from "../../components/Table/Table"
 
 function ViewEmployee(props) {
-
-    const user = useSelector((state) => state.employees);
-    
+  
     return (
         <>
             <h1>Current Employees</h1>
+            <Table></Table>
             <Link to="/">Home</Link>
         </>
     )
