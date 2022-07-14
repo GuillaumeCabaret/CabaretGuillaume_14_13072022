@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { modal_visibility } from "../../employeeReducer";
-import { store } from "../../store"
+import { modal_visibility } from "../../app/employeeReducer";
+import { store } from "../../app/store"
 
 function Modal(props) {
 

@@ -66,4 +66,8 @@ background-color: rgba(116, 116, 110, 0.363);
 position: absolute;
 top: 0;
 right: 0;
+}
+
+select {
+  margin: 10px 0;
 } 

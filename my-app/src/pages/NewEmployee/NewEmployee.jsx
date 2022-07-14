@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import Form from "../../app/components/Form/Form";
-import Modal from '../../app/components/Modal/Modal';
+import Form from "../../components/Form/Form";
+import Modal from '../../components/Modal/Modal';
+
 function NewEmployee(props) {
 
     return (
