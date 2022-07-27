@@ -7,9 +7,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<NewEmployee></NewEmployee>}>          
+        <Route path="/" element={<NewEmployee/>}>          
         </Route>
-        <Route path="/employees" element={<ViewEmployee></ViewEmployee>}>      
+        <Route path="/employees" element={<ViewEmployee/>}>      
         </Route>
       </Routes>
     </BrowserRouter>

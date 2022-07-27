@@ -1,8 +1,19 @@
-import { Link } from 'react-router-dom';
-import Form from "../../components/Form/Form";
 import Modal from '../../components/Modal/Modal';
 
+import { Link } from 'react-router-dom';
+import Form from "../../components/Form/Form";
+import React from "react"
+import {useSelector, useDispatch} from "react-redux"
+import { modal_visibility } from "../../app/employeeReducer";
+
 function NewEmployee(props) {
+
+   const isOpen = useSelector((state) => state.modalVisibility); 
+   const dispatch = useDispatch()
+
+    function closeModal() {
+        dispatch(modal_visibility(false))
+    }
 
     return (
         <>
@@ -12,7 +23,7 @@ function NewEmployee(props) {
                 <h2>Create Employee</h2>
             </div>
             <Form></Form>
-            <Modal></Modal>
+            <Modal isOpen={isOpen} closeModal={closeModal} customBtn={(props) => <button onClick={props.onClick}>X</button>}></Modal>
         </>
     )
 }

@@ -1,58 +1,108 @@
-import { useSelector } from "react-redux";
+import React, { useMemo} from "react";
+import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 
-function Tableau(props) {
-  const employees = useSelector((state) => state.employees);
+import { useGlobalFilter, useTable, useSortBy, usePagination } from "react-table";
+import {useSelector} from "react-redux";
+import { tableColumns } from "./TableColumns";
+import { GlobalFilter } from "./GlobalFilter";
+import PageIndex from "./PageIndex";
+import PageSize from "./PageSize";
+import employeesList from "../../data/employees.json"
 
-  function dynamicSort(property) {
-    var sortOrder = 1;
-    if (property[0] === "-") {
-      sortOrder = -1;
-      property = property.substr(1);
-    }
-    return function (a, b) {
-      var result =
-        a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
-      return result * sortOrder;
-    };
-  }
-  function sorting(property) {
-    employees.sort(dynamicSort(property));
-  }
+import "./Table.css";
 
+function Table() {
+  // const employeesData = employeesList || [];
+  const employeesData = useSelector(state => state.employees)
+  //hook useMemo for optimize the react speed. useMemo store a value in the memory and
+  //not re-execute if the value not change
+  const columns = useMemo(() => tableColumns, []);
+  // eslint-disable-next-line
+  const data = useMemo(() => employeesData, []);
+
+  //Hooks
+  //shorthand syntax columns: columns & data: data
+  const tableInstance = useTable(
+    {
+      columns,
+      data,
+    },
+    useGlobalFilter,
+    useSortBy,
+    usePagination
+  );
+
+  /**
+   * Props used in the Table Component
+   */
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    nextPage,
+    previousPage,
+    canNextPage,
+    canPreviousPage,
+    resetPageIndex,
+    gotoPage,
+    prepareRow,
+    state,
+    setGlobalFilter,
+    setPageSize,
+  } = tableInstance;
+
+  const { globalFilter, pageIndex, pageSize } = state;
   return (
-    <table>
-      <thead>
-        <tr>
-          <th onClick={sorting("firstName")}>First Name</th>
-          <th onClick={sorting("lastName")}>Last Name</th>
-          <th onClick={sorting("dateOfBirth")}>Start Date</th>
-          <th onClick={sorting("department")}>Department</th>
-          <th onClick={sorting("startDate")}>Date of Birth</th>
-          <th onClick={sorting("street")}>Street</th>
-          <th onClick={sorting("city")}>City</th>
-          <th onClick={sorting("state")}>State</th>
-          <th onClick={sorting("zipCode")}>Zip Code</th>
-        </tr>
-      </thead>
-      <tbody>
-        {employees.map((employee) => {
-          return (
-            <tr>
-              <td>{employee.firstName}</td>
-              <td>{employee.lastName}</td>
-              <td>{employee.dateOfBirth}</td>
-              <td>{employee.department}</td>
-              <td>{employee.startDate}</td>
-              <td>{employee.street}</td>
-              <td>{employee.city}</td>
-              <td>{employee.state}</td>
-              <td>{employee.zipCode}</td>
+    <div className="table__container">
+      <header className="table__header">
+        <PageSize pageSize={pageSize} setPageSize={setPageSize} />
+        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      </header>
+
+      <table className="table__contain" {...getTableProps()}>
+        <thead className="table__head">
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()} className="table__head--tr">
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps(column.getSortByToggleProps())} className="table__head--th">
+                  {column.render("Header")}
+                  {column.isSorted ? column.isSortedDesc ? <RiArrowDropDownLine /> : <RiArrowDropUpLine /> : " "}
+                </th>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()} className="table__body">
+          {page.map((row) => {
+            prepareRow(row);
+            return (
+              <tr {...row.getRowProps()} className="table__body--tr">
+                {row.cells.map((cell) => {
+                  return (
+                    <td {...cell.getCellProps()} className="table__body--td">
+                      {cell.render("Cell")}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <PageIndex
+        data={data}
+        gotoPage={gotoPage}
+        canNextPage={canNextPage}
+        canPreviousPage={canPreviousPage}
+        resetPageIndex = {resetPageIndex}
+        page={page}
+        nextPage={nextPage}
+        pageIndex={pageIndex}
+        previousPage={previousPage}
+      />
+    </div>
   );
 }
 
-export default Tableau;
+export default Table;
