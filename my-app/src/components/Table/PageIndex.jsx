@@ -13,23 +13,23 @@ function PageIndex({ page, data, pageIndex, gotoPage, previousPage, nextPage, ca
         Showing {page.length} of {data.length} entries
       </span>
       <div className="table__navigation">
-      <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-          {'<<'}
+      <button className = "paginate start" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+        <i></i><i></i> <i></i><i></i>
       </button>{' '}
-      <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          {'<'}
+      <button className = "paginate left" onClick={() => previousPage()} disabled={!canPreviousPage}>
+        <i></i><i></i>
       </button>{' '}
         <input
-          className="table__navigation--input"
+          className="counter"
           type="number"
           defaultValue={pageIndex + 1}
           onChange={handleChangePage}
         ></input>
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
-        {'>'}
+        <button className="paginate right" onClick={() => nextPage()} disabled={!canNextPage}>
+          <i></i><i></i>
         </button>{' '}
-        <button onClick={() => gotoPage(page.length)} disabled={!canNextPage}>
-          {'>>'}
+        <button className="paginate end" onClick={() => gotoPage(page.length)} disabled={!canNextPage}>
+          <i></i><i></i> <i></i><i></i>
       </button>
       </div>
     </div>
@@ -45,7 +45,6 @@ PageIndex.propTypes = {
   nextPage: PropTypes.func.isRequired,
   canPreviousPage: PropTypes.bool.isRequired,
   canNextPage: PropTypes.bool.isRequired,
-  resetPageIndex: PropTypes.bool.isRequired,
 };
 console.log()
 export default PageIndex;

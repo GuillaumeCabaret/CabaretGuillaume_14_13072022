@@ -2,6 +2,7 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from "../Dropdown/Dropdown";
+import "./Form.css"
 // import addDays from 'date-fns/addDays'
 
 import React from "react";
