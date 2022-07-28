@@ -7,7 +7,7 @@ import { tableColumns } from "./TableColumns";
 import { GlobalFilter } from "./GlobalFilter";
 import PageIndex from "./PageIndex";
 import PageSize from "./PageSize";
-import employeesList from "../../data/employees.json"
+// import employeesList from "../../data/employees.json"
 
 import "./Table.css";
 

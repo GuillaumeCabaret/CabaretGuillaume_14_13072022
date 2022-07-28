@@ -1,4 +1,4 @@
-import Modal from '../../components/Modal/Modal';
+import { Modal } from "modalgcx";
 
 import { Link } from 'react-router-dom';
 import Form from "../../components/Form/Form";

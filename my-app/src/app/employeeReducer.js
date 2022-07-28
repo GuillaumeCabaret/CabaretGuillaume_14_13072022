@@ -1,4 +1,4 @@
-import data from "../data/employees.json"
+// import data from "../data/employees.json"
 
 const initialSate = {
     employees: [],
