@@ -6,7 +6,7 @@ function ViewEmployee(props) {
         <>
             <h1>Current Employees</h1>
                 <Table />
-            <Link to="/">Home</Link>
+            <Link className='home' to="/">Home</Link>
         </>
     )
 }

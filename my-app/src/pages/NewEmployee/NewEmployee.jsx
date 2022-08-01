@@ -6,7 +6,7 @@ import React from "react"
 import {useSelector, useDispatch} from "react-redux"
 import { modal_visibility } from "../../app/employeeReducer";
 
-function NewEmployee(props) {
+function NewEmployee() {
 
    const isOpen = useSelector((state) => state.modalVisibility); 
    const dispatch = useDispatch()

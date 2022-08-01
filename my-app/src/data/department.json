@@ -1,17 +1,22 @@
 [
     {
-        "name": "Sales"
+        "name": "Sales",
+        "abbreviation" : "Sls"
     },
     {
-        "name": "Marketing"
+        "name": "Marketing",
+        "abbreviation" : "mrkt"
     },
     {
-        "name": "Engineering"
+        "name": "Engineering",
+        "abbreviation" : "eng"
     },
     {
-        "name": "Human Ressources"
+        "name": "Human Ressources",
+        "abbreviation" : "hmnrsc"
     },
     {
-        "name": "Legal"
+        "name": "Legal",
+        "abbreviation" : "lgl"
     }
 ] 

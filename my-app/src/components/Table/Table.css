@@ -12,7 +12,7 @@ table{
   table-layout: fixed;
 }
 .table__header{
-  margin-top: 30px;
+  margin-top: 20px;
   width: 100%;
   font-weight: bolder;
  }
@@ -34,7 +34,7 @@ table{
 .table__contain{
   height:300px;
   overflow-x:auto;
-  margin-top: 45px;
+  margin-top: 20px;
   border: 1px solid rgba(255,255,255,0.5);
 }
 
@@ -295,7 +295,7 @@ button {
 }
 .paginate.end[data-state="disabled"]:hover i:last-child {
   transform: translate(-5px, 0) rotate(0deg);
-} */
+}
 
 .paginate[data-state="disabled"] {
   opacity: 0.3;

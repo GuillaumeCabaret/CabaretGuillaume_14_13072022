@@ -1,7 +1,8 @@
-import data from "../data/employees.json"
+// import data from "../data/employees.json"
 
 const initialSate = {
-    employees: data,
+    // employees: [],
+    employees: JSON.parse(localStorage.getItem("employeeList")) !== null ? JSON.parse(localStorage.getItem("employeeList")) : [],
     modalVisibility: false
 }
 
