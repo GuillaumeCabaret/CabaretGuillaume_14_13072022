@@ -2,11 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function PageIndex({ page, data, pageIndex, gotoPage, previousPage, nextPage, canPreviousPage, canNextPage}) {
-  const handleChangePage = (event) => {
-    const pageNumber = event.target.value ? Number(event.target.value) - 1 : 0;
-    gotoPage(pageNumber);
-  };
-  
+
  return (
     <div className="table__footer">
       <span className="table__entries">
@@ -19,12 +15,7 @@ function PageIndex({ page, data, pageIndex, gotoPage, previousPage, nextPage, ca
       <button className = "paginate left" onClick={() => previousPage()} disabled={!canPreviousPage}>
         <i></i><i></i>
       </button>{' '}
-        <input
-          className="counter"
-          type="number"
-          defaultValue={pageIndex + 1}
-          onChange={handleChangePage}
-        ></input>
+        <p className="counter" type="number">{pageIndex + 1}</p>
         <button className="paginate right" onClick={() => nextPage()} disabled={!canNextPage}>
           <i></i><i></i>
         </button>{' '}

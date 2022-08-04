@@ -185,9 +185,24 @@
   
    .buttonSubmit{
     margin-top: 10px;
-     padding: 8px 10px;
-     align-self: center;
+    padding: 8px 10px;
+    align-self: center;
+    background: #5F86CC;
+    color: #fff;
+    border: 0;
+    border-bottom: 4px solid darken(#5F86CC, 7%);
+    font-size: 1em;
+    font-weight: bold;
    }
+    .buttonSubmit:focus,
+    .buttonSubmit:hover {
+      background: #16a085;
+      border-bottom-color: darken(#5F86CC, 7%);
+    }
+    .buttonSubmit:active {
+      background: #1bc2a2;
+      border-bottom-color: darken(#5F86CC, 7%);
+    }
   .modal{
       text-align: center;
       position: relative;

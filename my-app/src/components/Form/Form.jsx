@@ -33,15 +33,15 @@ function Form() {
         const values = {firstName,lastName,dateOfBirth: birthDate.toUTCString(),startDate: startDate.toUTCString(),street,city,state:countryState,zipCode: zip,department};
         dispatch(add_employee(values))
         localStorage.setItem("employeeList",JSON.stringify([...employeesData, values]))
-
     }
+
     return (        
         <>
             <form className="form" onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First Name</label>
-                <input type="text" id="firstName" onChange={(e) => setFirstName(e.target.value)} required></input>
+                <input type="text" id="firstName" onChange={(e) => setFirstName(e.target.value)} pattern="[a-zA-Z]+"></input>
                 <label htmlFor="lastName">Last Name</label>
-                <input type="text" id="lastName" onChange={(e) => setLastName(e.target.value)} required></input>
+                <input type="text" id="lastName" onChange={(e) => setLastName(e.target.value)} pattern="[a-zA-Z]+"></input>
                 <label htmlFor="birthDate">Date of birth</label>
                 <DatePicker id ="birthdate" 
                 data-testid="birthdate" 
@@ -63,13 +63,13 @@ function Form() {
                 <div className="address">
                     <p className="addressTitle">Address</p>
                     <label htmlFor="street">Street</label>
-                    <input type="text" id="street" onChange={(e) => setStreet(e.target.value)} required></input>
+                    <input type="text" id="street" onChange={(e) => setStreet(e.target.value)} pattern="[a-zA-Z]+"></input>
                     <label htmlFor="city">City</label>
-                    <input type="text" id="city" onChange={(e) => setCity(e.target.value)} required></input>
+                    <input type="text" id="city" onChange={(e) => setCity(e.target.value)} pattern="[a-zA-Z]+"></input>
                     <label htmlFor="state">State</label>
                     <Dropdown values={states} callback={setCountrystate} id={"state"} value={countryState}></Dropdown>
                     <label htmlFor="zip">Zip Code</label>
-                    <input type="number" id="zip" onChange={(e) => setZip(e.target.value)} required></input>
+                    <input type="number" id="zip" onChange={(e) => setZip(e.target.value)}></input>
                 </div>
                 <label htmlFor="department">Department</label>
                 <Dropdown values={dropDepartment} callback={setDepartment} id={"department"} value={department}></Dropdown>
